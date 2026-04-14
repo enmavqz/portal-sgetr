@@ -1,0 +1,76 @@
+:root { 
+  --sgetr-blue: #1a237e; --sgetr-green: #008450; 
+  --sgetr-red: #d32f2f; --bg: #f8f9fa; 
+}
+
+html, body { 
+  height: 100%; width: 100%; margin: 0; padding: 0; 
+  background-color: var(--bg); font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+#sidebar-overlay {
+  display: none; position: fixed; inset: 0; 
+  background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); z-index: 1090; 
+  opacity: 0; transition: opacity 0.3s ease;
+}
+
+.sidebar { 
+  position: fixed; top: 0; left: 0; bottom: 0; width: 280px; 
+  background: white; border-right: 1px solid #e0e0e0; padding: 1.5rem; 
+  display: flex; flex-direction: column; z-index: 1100;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.main-content { 
+  margin-left: 280px; min-height: 100vh; padding: 2.5rem; 
+  transition: margin-left 0.3s ease;
+}
+
+.mobile-nav-toggle {
+  display: none; position: fixed; top: 15px; left: 15px; z-index: 1200;
+  background: var(--sgetr-blue); color: white; border: none;
+  padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.grid-menu { 
+  display: grid; grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem; max-width: 1000px; margin: 0; 
+}
+
+.card-stat {
+  background: white !important; border: 1px solid #eee; border-radius: 20px;
+  padding: 1.8rem; display: flex; align-items: center;
+  transition: all 0.2s ease; cursor: pointer; border-left: 8px solid #ddd;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.card-stat:active { transform: scale(0.97); }
+.card-faltas { border-left-color: var(--sgetr-red) !important; }
+.card-demeritos { border-left-color: #fb8c00 !important; }
+.card-meritos { border-left-color: var(--sgetr-green) !important; }
+.card-redenciones { border-left-color: var(--sgetr-blue) !important; }
+
+.bottom-section { 
+  margin-top: auto; padding-top: 2rem; border-top: 1px solid #eee; background: white;
+}
+
+@media (max-width: 992px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.active { transform: translateX(0); box-shadow: 15px 0 30px rgba(0,0,0,0.2); }
+  .main-content { margin-left: 0; padding: 1.5rem; padding-top: 5rem; }
+  .mobile-nav-toggle { display: block; }
+  .grid-menu { grid-template-columns: 1fr; max-width: 100%; }
+  .card-stat { padding: 1.2rem; }
+}
+
+.timeline-item { background: white !important; border-radius: 15px; padding: 1.2rem; margin-bottom: 1rem; border: 1px solid #eee; border-left: 8px solid #ddd; }
+.FL { border-left-color: #ffeb3b; } .FG { border-left-color: #fb8c00; } .FMG { border-left-color: #d32f2f; }
+.MERITO, .REDENCION { border-left-color: var(--sgetr-green) !important; }
+.profile-box { text-align: center; padding: 1rem; background: #fafafa; border-radius: 20px; border: 1px solid #eee; margin-bottom: 1rem; }
+.profile-img { width: 80px; height: 80px; object-fit: cover; border-radius: 15px; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.nav-btn { display: flex; align-items: center; padding: 12px 15px; border-radius: 12px; color: #555; font-weight: 600; margin-bottom: 5px; border: none; background: transparent; width: 100%; text-align: left; }
+.nav-btn.active { background: var(--sgetr-blue); color: white; }
+#loader { position: fixed; inset: 0; background: white; z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.hidden { display: none !important; }
