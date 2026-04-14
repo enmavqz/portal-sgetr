@@ -3,16 +3,26 @@ var SGETR_UI = function() {
   this.modal = null;
 };
 
-SGETR_UI.prototype.init = function() {
+SGETR_UI.prototype.init = function(nieManual) {
   var self = this;
   this.modal = new bootstrap.Modal(document.getElementById('modalCarnet'));
-  google.script.run
-    .withSuccessHandler(function(res) {
+  var WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxW9i8-T7Yfq8fADKDvh9pXGC_XK4K-ypVrarRn8N0gl-CZbGNTpx_3v4SsPTKMZGpq/exec";
+  var urlFetch = WEB_APP_URL + "?action=getDatos";
+  if(nieManual) urlFetch += "&nie=" + nieManual;
+fetch(urlFetch)
+    .then(response => response.json())
+    .then(res => {
       document.getElementById('loader').classList.add('hidden');
-      if (res.error && !res.isAdmin) return alert("Aviso: " + res.detalle);
+      if (res.error) return alert("Aviso: " + res.detalle);
+      
       self.datos = res;
       self.render();
     })
+    .catch(err => {
+      console.error("Error de conexión:", err);
+      alert("Error al conectar con el servidor SGETR. Verifica la configuración de la Web App.");
+      document.getElementById('loader').classList.add('hidden');
+    });
     .getDatosPortal();
 };
 
