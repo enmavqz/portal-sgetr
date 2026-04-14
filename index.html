@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>SGETR - Portal Estudiantil</title>
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGETR - Portal Estudiantil</title>
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #1a237e; font-family: sans-serif; }
+    iframe { width: 100%; height: 100%; border: none; }
+    
+    /* Mensaje de ayuda si Google bloquea el login */
+    .login-overlay {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; color: white; text-align: center;
+      padding: 20px; z-index: -1; /* Se queda atrás del iframe */
+    }
+    .btn-login {
+      background: #008450; color: white; padding: 12px 25px; 
+      border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/a/macros/clases.edu.sv/s/AKfycbz38p_69bmv9IYvvz7CyMnULGB8HQq1Qpz9hmsCZBio9SV-r3cZvzdOK0DnuvHxLA7O/exec"></iframe>
+
+  <div class="login-overlay">
+    <h2>SGETR - Portal Privado</h2>
+    <p>Si la ventana no carga, es necesario iniciar sesión con tu cuenta institucional.</p>
+    <a href="https://script.google.com/a/macros/clases.edu.sv/s/AKfycbz38p_69bmv9IYvvz7CyMnULGB8HQq1Qpz9hmsCZBio9SV-r3cZvzdOK0DnuvHxLA7O/exec" target="_blank" class="btn-login">INICIAR SESIÓN AQUÍ</a>
+  </div>
+
+  <iframe src="https://script.google.com/a/macros/clases.edu.sv/s/AKfycbz38p_69bmv9IYvvz7CyMnULGB8HQq1Qpz9hmsCZBio9SV-r3cZvzdOK0DnuvHxLA7O/exec"></iframe>
+
 </body>
 </html>
