@@ -6,7 +6,7 @@ var SGETR_UI = function() {
 SGETR_UI.prototype.init = function(nieManual) {
   var self = this;
   this.modal = new bootstrap.Modal(document.getElementById('modalCarnet'));
-  var WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxW9i8-T7Yfq8fADKDvh9pXGC_XK4K-ypVrarRn8N0gl-CZbGNTpx_3v4SsPTKMZGpq/exec";
+  var WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwTMqsULSJewdFuQeUBljmLUh3PO6RYFoqS-l8m2jeT9m_TMuFxaE97hqwbqQ9fQH33/exec";
   var urlFetch = WEB_APP_URL + "?action=getDatos";
   if(nieManual) urlFetch += "&nie=" + nieManual;
 fetch(urlFetch)
